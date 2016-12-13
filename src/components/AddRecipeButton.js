@@ -1,7 +1,8 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
 
 const AddRecipeButton = ({onClick}) => (
-  <button className="Add-recipe" onClick={onClick}>Add Recipe</button>
+  <Button className="Add-recipe" onClick={onClick} bsStyle="info">Add Recipe</Button>
 )
 
 export default AddRecipeButton

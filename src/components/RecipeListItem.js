@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
+import { ListGroup, ListGroupItem, Panel, ButtonToolbar, Button } from 'react-bootstrap'
 
 export default class RecipeListItem extends Component {
   render() {
     const { title, ingredients, onEdit, onDelete } = this.props;
     return(
-        <div>
-          <h4>{title}</h4>
-          <ul>
-            {ingredients.map((item, index) => <li key={index}>{item}</li>)}
-          </ul>
-          <button onClick={onEdit}>Edit</button>
-          <button onClick={onDelete}>Delete</button>
-        </div>
+        <Panel collapsible header={title} >
+          <h4>Ingredients</h4>
+          <ListGroup>
+            {ingredients.map((item, index) =>
+              <ListGroupItem key={index}>{item}</ListGroupItem>)}
+          </ListGroup>
+          <ButtonToolbar>
+            <Button onClick={onEdit} bsStyle="info">Edit</Button>
+            <Button onClick={onDelete} bsStyle="danger">Delete</Button>
+          </ButtonToolbar>
+        </Panel>
       )
   }
 }

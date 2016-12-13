@@ -50,6 +50,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>Recipe Book</h1>
         <RecipeList recipes={this.state.recipes} onEditClick={this.addRecipe} onDeleteClick={this.deleteRecipe}/>
         <AddRecipeButton onClick={this.addRecipe} />
         <AddRecipeForm  ref="modal" data={this.editItem} onSave={this.saveRecipe}/>
