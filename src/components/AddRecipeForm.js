@@ -6,7 +6,10 @@ import { Modal, Button, FormGroup, ControlLabel, FormControl} from 'react-bootst
 export default class AddRecipeForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { modalIsOpen: false };
+    this.state = {
+      modalIsOpen: false,
+      isValidData: false
+    };
   }
   openModal = () => {
     this.setState({ modalIsOpen: true});
@@ -24,6 +27,10 @@ export default class AddRecipeForm extends Component {
     this.closeModal();
   }
 
+  validateHandler = (e) => {
+    this.setState({...this.state, isValidData: e.target.value })
+  }
+
   render() {
     const {title = "", ingredients = []} = this.props.data;
     return (
@@ -39,16 +46,24 @@ export default class AddRecipeForm extends Component {
                 componentClass="input"
                 placeholder="Enter recipe title"
                 inputRef={(ref) => {this.input = ref}}
-                defaultValue={title}/>
+                defaultValue={title}
+                onChange={this.validateHandler}
+                />
             </FormGroup>
             <FormGroup>
               <ControlLabel>Ingredients</ControlLabel>
-              <FormControl componentClass="textarea" placeholder="Please add ingredients separated by comma" inputRef={(ref) => {this.ingredients = ref}} defaultValue={ingredients.join()}/>
+              <FormControl
+                componentClass="textarea"
+                placeholder="Please add ingredients separated by comma"
+                inputRef={(ref) => {this.ingredients = ref}}
+                defaultValue={ingredients.join()}
+                onChange={this.validateHandler}
+              />
             </FormGroup>
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.onSaveClick} bsStyle="info">Save</Button>
+            <Button onClick={this.onSaveClick} bsStyle="info" disabled={!this.state.isValidData}>Save</Button>
             <Button onClick={this.closeModal}>Close</Button>
           </Modal.Footer>
       </Modal>
