@@ -28,7 +28,7 @@ export default class AddRecipeForm extends Component {
   }
 
   validateHandler = (e) => {
-    this.setState({...this.state, isValidData: e.target.value })
+    this.setState({...this.state, isValidData: this.input.value && this.ingredients.value })
   }
 
   render() {
