@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 
 //import Modal from 'react-modal';
 import { Modal, Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap'
@@ -27,7 +26,6 @@ export default class AddRecipeForm extends Component {
 
   render() {
     const {title = "", ingredients = []} = this.props.data;
-    console.log(title, ingredients);
     return (
       <Modal show={this.state.modalIsOpen} onHide={this.closeModal}>
           <Modal.Header closeButton>

@@ -18,7 +18,7 @@ export default class RecipeList extends Component {
                   />)}
           </Accordion>
           :
-          <span bsSize="large">Recipes not added yet</span>
+          <div>Recipes not added yet</div>
           }
         </Panel>
       )
