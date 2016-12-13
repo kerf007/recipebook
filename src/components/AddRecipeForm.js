@@ -12,7 +12,9 @@ export default class AddRecipeForm extends Component {
     };
   }
   openModal = () => {
-    this.setState({ modalIsOpen: true});
+    this.setState({ modalIsOpen: true,
+                    isValidData: false
+    });
   }
   closeModal = () => {
     this.setState({modalIsOpen: false});
@@ -27,8 +29,12 @@ export default class AddRecipeForm extends Component {
     this.closeModal();
   }
 
-  validateHandler = (e) => {
-    this.setState({...this.state, isValidData: this.input.value && this.ingredients.value })
+  validateHandler = () => {
+    this.setState({...this.state, isValidData: !!(this.input.value && this.ingredients.value) })
+  }
+
+  componentDidMount() {
+    this.setState({ isValidData: false });
   }
 
   render() {

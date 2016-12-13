@@ -29,7 +29,6 @@ class App extends Component {
   }
 
   saveRecipe = (item) => {
-    console.log(item);
     this.setState({recipes:
       (!item.id) ? this.state.recipes.concat({ ...item, id: Date.now()}) :
                    this.state.recipes.map((el,idx) => {
